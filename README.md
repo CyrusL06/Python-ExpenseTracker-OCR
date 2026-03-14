@@ -402,21 +402,6 @@ If the endpoint does not work, check these in order:
 ## 4. Server restart
 After changing code, restart Django:
 
-```bash
-python manage.py runserver
-```
+https://scontent.fyvr1-1.fna.fbcdn.net/v/t1.15752-9/649634781_1929865861250848_4600977688621816367_n.png?stp=dst-png_s960x960&_nc_cat=111&ccb=1-7&_nc_sid=9f807c&_nc_ohc=4IA3wzE0EksQ7kNvwEyT859&_nc_oc=Adk7T6lK21AizYJ97VuX-A2HlwbglmvwxE4XqP6fal2z0KxgvAimFd221ttj4AV1IuGBH24gHZN6fQQx5FsNLWq3&_nc_zt=23&_nc_ht=scontent.fyvr1-1.fna&_nc_ss=8&oh=03_Q7cD4wFZOjZRh4MHHSXii3lRlfWRFdqh2sOq-xAqOv08BTEOMw&oe=69DC7595
 
-## 5. Cookies in Postman
-If you still get 403, clear cookies for `127.0.0.1` / `localhost` in Postman.
 
----
-
-# Final Goal of Version 1
-By the end of Version 1, this should work:
-
-- Postman sends file → `POST /api/ocr/`
-- Django receives file → `request.FILES["file"]`
-- Django returns JSON saying upload succeeded
-
-That means the backend upload pipeline is ready.
-Only after that should you plug in real OCR.
