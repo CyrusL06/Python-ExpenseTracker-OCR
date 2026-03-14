@@ -14,6 +14,8 @@ from rest_framework import status
 #allows any to be acall with this endpotint for now
 from rest_framework.permissions import AllowAny
 
+# Import the OCR helper function we made
+from .services import extract_text_from_image
 
 # Create your views here.
 
@@ -50,13 +52,34 @@ class OCR_view(APIView):
                 {"error": "No FIle was uploaded"},
                 status = status.HTTP_400_BAD_REQUEST,
             )
-        return Response(
-            {
+        
+        try:
+            #Run the OCR
+            extracted_text = extract_text_from_image(uploaded_file)
+
+            #Return the OCRS result
+            return Response(
+                {
+                    "message": "OCR COmpleted successfully",
+                    "filename": uploaded_file.name,
+                    "content_type": uploaded_file.content_type,
+                    "text": extracted_text
+                },
+                status=status.HTTP_200_OK
+            )
+        
+            
+
+        except Exception as ex:
+            #if something goes wrong
+             return Response(
+             {
                 "message": "POST request worked",
                 "filename": uploaded_file.name,
                 "size": uploaded_file.size,
                 "content-type": uploaded_file.content_type,
-            },
-            status= status.HTTP_200_OK,
+             },
+                status= status.HTTP_200_OK,
             
         )
+       

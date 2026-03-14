@@ -36,21 +36,63 @@ function App() {
     }
   }, [])
 
+  const today = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: '2-digit',
+    year: 'numeric',
+  }).format(new Date())
+
+  const statusLabel =
+    apiState === 'online'
+      ? 'Backend Linked'
+      : apiState === 'offline'
+        ? 'Signal Lost'
+        : 'Checking Link'
+
   return (
     <main className="app-shell">
-      <header className="app-header">
-        <span className={`status-chip status-${apiState}`}>
-          {apiState === 'online'
-            ? 'Backend Online'
-            : apiState === 'offline'
-              ? 'Backend Offline'
-              : 'Checking Backend'}
-        </span>
-        <h1>Receipt Intake Form</h1>
-        <p>{apiMessage}</p>
-      </header>
+      <aside className="side-rail" aria-label="Application rail">
+        <p className="rail-mark">OCR / DJANGO</p>
+        <div className="rail-block">
+          <span className="rail-label">Desk</span>
+          <strong className="rail-value">03</strong>
+        </div>
+        <div className={`rail-block rail-status rail-status-${apiState}`}>
+          <span className="rail-label">Status</span>
+          <strong className="rail-value">{statusLabel}</strong>
+        </div>
+      </aside>
 
-      <ReceiptRequestForm />
+      <section className="workspace">
+        <header className="masthead">
+          <div className="inspection-stripe" aria-hidden="true">
+            <span>SCAN IN PROGRESS</span>
+          </div>
+
+          <div className="masthead-meta">
+            <span className="meta-tag">Receipt Intake Desk</span>
+            <span className="meta-tag">{today}</span>
+          </div>
+
+          <div className="masthead-grid">
+            <div className="headline-block">
+              <p className="eyebrow">Thermal receipt parsing / extraction command</p>
+              <h1>OCR FIELD COMMAND</h1>
+            </div>
+
+            <div className="mission-panel">
+              <p className="mission-label">Live backend note</p>
+              <p className="mission-copy">{apiMessage}</p>
+              <div className="mission-foot">
+                <span>Output scope: structured fields only</span>
+                <span>Mode: local request staging</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <ReceiptRequestForm statusLabel={statusLabel} />
+      </section>
     </main>
   )
 }
