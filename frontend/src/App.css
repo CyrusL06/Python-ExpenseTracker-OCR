@@ -1,0 +1,60 @@
+.app-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 2rem auto 2.4rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.app-header {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--surface);
+  padding: 1.25rem 1.3rem;
+  box-shadow: 0 18px 38px rgba(7, 27, 38, 0.09);
+  backdrop-filter: blur(8px);
+}
+
+.app-header h1 {
+  margin: 0.55rem 0 0.3rem;
+  font-size: clamp(1.75rem, 3vw, 2.3rem);
+  line-height: 1.07;
+}
+
+.app-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.32rem 0.74rem;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.status-online {
+  color: #0f6f3f;
+  background: #dff8ea;
+}
+
+.status-offline {
+  color: #9a2234;
+  background: #ffe4ea;
+}
+
+.status-checking {
+  color: #2f5c78;
+  background: #dfedf8;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    width: calc(100% - 1rem);
+    margin-top: 1rem;
+  }
+}

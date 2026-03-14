@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap');
+
+:root {
+  --font-heading: 'Fraunces', 'Iowan Old Style', 'Times New Roman', serif;
+  --font-body: 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif;
+  --ink: #173047;
+  --muted: #486075;
+  --line: #c8d8e6;
+  --line-strong: #8eaac0;
+  --surface: rgba(253, 255, 255, 0.82);
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --accent: #106791;
+  --accent-soft: #e6f2fb;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 0%, #fff4dd 0 16%, transparent 40%),
+    radial-gradient(circle at 100% 10%, #dcf3ff 0 18%, transparent 42%),
+    linear-gradient(165deg, #f4f7fc, #edf3f7 45%, #fdfaf3 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--ink);
+}
+
+p {
+  line-height: 1.52;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
